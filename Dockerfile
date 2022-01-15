@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:2.319.1-jdk11
 VOLUME [ "/certs/client" ]
 USER root
-RUN apt-get update && apt-get install -y lsb-release
+RUN apt-get update && apt-get install -y lsb-release rsync lftp
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
   https://download.docker.com/linux/debian/gpg
 RUN echo "deb [arch=$(dpkg --print-architecture) \

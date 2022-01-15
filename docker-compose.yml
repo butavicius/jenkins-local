@@ -2,6 +2,7 @@ services:
   docker:
     image: docker:dind
     privileged: true
+    restart: always
     networks:
       - jenkins
     volumes:
@@ -13,10 +14,13 @@ services:
     build: .
     depends_on:
       - docker
+    restart: always
     environment:
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
       DOCKER_TLS_VERIFY: 1
+      DOCKER_USERNAME: butavicius
+      DOCKER_PASSWORD: 6b0f161f-b78c-44e5-b83c-c00519ec2402
     ports:
       - 8080:8080
     volumes:
